@@ -48,13 +48,13 @@ namespace FlyToElephant
         for(int i = 0; i < dictionary.Count; ++i) {
           if( dictionary[i] == null ) continue;
           var diff = word.diffFromWord(dictionary[i]);
-			    if (diff == 1) {
+	  if (diff == 1) {
             var w1 = new Word(dictionary[i]);
             w1.prev = word;
-				    intermediateWords.Enqueue(w1);
+            intermediateWords.Enqueue(w1);
             dictionary[i] = null;
-				    continue;
-			    }
+            continue;
+          }
         }
       }
 
@@ -74,22 +74,22 @@ namespace FlyToElephant
 
     internal int diffFromWord(string word)
     {
-	    if (m_word == word) {
-		    return 0;
-	    }
+      if (m_word == word) {
+        return 0;
+      }
 
-	    if (m_word.Length != word.Length) {
-		    return Math.Max(m_word.Length, word.Length);
-	    }
+      if (m_word.Length != word.Length) {
+        return Math.Max(m_word.Length, word.Length);
+      }
 
-	    int diffChars = 0;
-	    for (int i = 0; i != m_word.Length; ++i) {
-		    if (m_word[i] != word[i]) {
-			    ++diffChars;
-		    }
+      int diffChars = 0;
+      for (int i = 0; i != m_word.Length; ++i) {
+        if (m_word[i] != word[i]) {
+          ++diffChars;
+        }
         if( diffChars > 1 ) break;
-	    }
-	    return diffChars;
+      }
+      return diffChars;
     }
     internal void setPrev( Word word)
     {
@@ -109,13 +109,7 @@ namespace FlyToElephant
     
     internal void print()
     {
-      Word word = this;
-      
-      //while( word != null ) {
-      //  Console.WriteLine(word.value);
-      //  word = word.prev;
-      //}
-
+      Word word = this;     
       List<string> reverseResult = new List<string>();
       while( word != null ) {
         reverseResult.Insert(0, word.value);
